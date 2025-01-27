@@ -8,23 +8,19 @@ const multer = require("multer");
 const app = express();
 const PORT = 3000;
 
-// Middleware
-app.use(cors()); // Replace with actual allowed origin
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Set up EJS as the view engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views")); // Set the views folder
+app.set("views", path.join(__dirname, "views"));
 
-// Paths to the JSON files where form data will be saved
 const generalFormFilePath = "./submissions.json";
 const careerFormFilePath = "./career_submissions.json";
 
-// Configure multer for file upload (for career form)
 const upload = multer({
-  dest: "uploads/", // Directory where uploaded files will be saved
-  limits: { fileSize: 10 * 1024 * 1024 }, // Max file size 10MB
+  dest: "uploads/",
+  limits: { fileSize: 10 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (!file.mimetype.startsWith("application/")) {
       req.fileValidationError = "Only PDF and Word files are allowed!";
@@ -34,7 +30,6 @@ const upload = multer({
   },
 });
 
-// Helper function for validating the general form
 function validateFormData(data) {
   const errors = {};
 
@@ -63,7 +58,6 @@ function validateFormData(data) {
   return Object.keys(errors).length > 0 ? errors : null;
 }
 
-// Helper function for validating the career form
 function validateCareerFormData(data) {
   const errors = {};
 
@@ -92,7 +86,6 @@ function validateCareerFormData(data) {
   return Object.keys(errors).length > 0 ? errors : null;
 }
 
-// Function to save form data to JSON file
 async function saveFormData(filePath, formData) {
   try {
     const data = await fs.readFile(filePath, "utf8");
@@ -106,7 +99,6 @@ async function saveFormData(filePath, formData) {
   }
 }
 
-// Route to handle general form submission
 app.post("/submit-form", async (req, res) => {
   const formData = req.body;
 
@@ -127,12 +119,10 @@ app.post("/submit-form", async (req, res) => {
   }
 });
 
-// Route to handle career form submission (with file upload)
 app.post("/submit-career-form", upload.single("resume"), async (req, res) => {
   console.log("Received data:", req.body);
   console.log("Received file:", req.file);
 
-  // Check if there are errors in file upload (e.g., invalid file type or size)
   if (req.fileValidationError) {
     return res.status(400).json({
       status: "error",
@@ -142,10 +132,9 @@ app.post("/submit-career-form", upload.single("resume"), async (req, res) => {
 
   const careerData = req.body;
 
-  // If a file is uploaded, add file path to careerData
   if (req.file) {
-    careerData.filePath = req.file.path; // Store the file path
-    careerData.fileName = req.file.originalname; // Store original file name
+    careerData.filePath = req.file.path;
+    careerData.fileName = req.file.originalname;
   }
 
   const validationErrors = validateCareerFormData(careerData);
@@ -167,31 +156,28 @@ app.post("/submit-career-form", upload.single("resume"), async (req, res) => {
   }
 });
 
-// Route to display the admin dashboard for general form submissions
 app.get("/admin-dashboard", async (req, res) => {
   try {
     const data = await fs.readFile(generalFormFilePath, "utf8");
     const submissions = data ? JSON.parse(data) : [];
-    res.render("dashboard", { submissions, submissions2: [] }); // Pass an empty array for submissions2
+    res.render("dashboard", { submissions, submissions2: [] });
   } catch (err) {
     console.error("Error reading file:", err);
     res.status(500).json({ status: "error", message: "Error reading file." });
   }
 });
 
-// Route to display the admin dashboard for career form submissions
 app.get("/career-dashboard", async (req, res) => {
   try {
     const data = await fs.readFile(careerFormFilePath, "utf8");
     const submissions2 = data ? JSON.parse(data) : [];
-    res.render("dashboard", { submissions2, submissions: [] }); // Pass an empty array for submissions
+    res.render("dashboard", { submissions2, submissions: [] });
   } catch (err) {
     console.error("Error reading file:", err);
     res.status(500).json({ status: "error", message: "Error reading file." });
   }
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
