@@ -403,14 +403,11 @@ document
     };
 
     try {
-      const response = await fetch(
-        "https://backend.vercel.app/api/submit-form",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("https://backend.vercel.app/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         const result = await response.json();
