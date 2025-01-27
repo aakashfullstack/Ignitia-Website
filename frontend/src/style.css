@@ -21,7 +21,7 @@ header {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
+  height: 100svh;
   width: 100%;
   /* background-color: #f3f3f3; */
   position: relative;
@@ -440,6 +440,7 @@ section h1 span {
   display: flex;
   /* width: 100rem; */
   justify-content: space-evenly;
+  align-items: center;
   width: 95vw;
   margin: auto;
   margin-top: 5rem;
@@ -810,10 +811,6 @@ section h1 span {
 }
 
 @media screen and (max-width: 1326px) {
-  /* .hero-h1 {
-    font-size: 2.25rem;
-  } */
-
   .slider {
     grid-template-columns: 1fr;
     align-items: center;
@@ -868,13 +865,13 @@ section h1 span {
   }
 
   .appointment-flex-inner {
-    width: 30rem;
+    width: 95vw;
   }
 
   .appointment-flex > p,
   .appointment-flex-inner > p,
   .appointment-flex-inner2 > p {
-    /* width: 30rem; */
+    width: 95vw;
     font-size: 0.8rem;
   }
 
@@ -888,6 +885,11 @@ section h1 span {
 }
 
 @media screen and (max-width: 1257px) {
+  .appointment-flex-inner,
+  .appointment-flex-inner2 {
+    margin-top: 1.25rem;
+  }
+
   .ceo-hover1 {
     width: 35rem;
   }
@@ -1052,7 +1054,6 @@ section h1 span {
   .appointment-flex > p,
   .appointment-flex-inner > p,
   .appointment-flex-inner2 > p {
-    /* width: 25rem; */
     padding: 0.9rem;
   }
 
@@ -1061,10 +1062,6 @@ section h1 span {
   }
   .hero-p {
     font-size: 1rem;
-  }
-
-  .appointment-flex-inner {
-    width: 25rem;
   }
 
   .appointment-flex-inner2 {
