@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+
+    <h2>General Form Submissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Service Type</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% submissions.forEach(submission => { %>
+        <!-- Fixed space here -->
+        <tr>
+          <td><%= submission.name %></td>
+          <td><%= submission.email %></td>
+          <td><%= submission.mobile %></td>
+          <td><%= submission.serviceType %></td>
+          <td><%= submission.message %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <h2>Career Form Submissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Role</th>
+          <th>Cover Letter</th>
+          <th>Resume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (submissions2.length > 0) { %>
+        <!-- Fixed placement of if condition -->
+        <% submissions2.forEach(submission => { %>
+        <!-- Fixed space here -->
+        <tr>
+          <td><%= submission.name %></td>
+          <td><%= submission.email %></td>
+          <td><%= submission.mobile %></td>
+          <td><%= submission.role %></td>
+          <td><%= submission.coverLetter %></td>
+          <td>
+            <% if (submission.filePath) { %>
+            <a href="<%= submission.filePath %>" target="_blank"
+              >Download Resume</a
+            >
+            <% } else { %> No resume uploaded <% } %>
+          </td>
+        </tr>
+        <% }); %> <% } else { %>
+        <tr>
+          <td colspan="6">No career submissions yet.</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

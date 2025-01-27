@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Aakash Singh",
+    "email": "aakash@agrayinfosolutions.com",
+    "mobile": "9654893760",
+    "serviceType": "Job enquiry",
+    "message": "I am looking for a software developer job"
+  },
+  {
+    "name": "Aakash",
+    "email": "aakash.law139@gmail.com",
+    "mobile": "9616605090",
+    "serviceType": "Job",
+    "message": "Respected Sir I am looking for a solutions architect job."
+  },
+  {
+    "name": "Kshitiz",
+    "email": "aakash.law139@gmail.com",
+    "mobile": "8188028684",
+    "serviceType": "Job",
+    "message": "Respected Sir I am looking for a job opportunity."
+  },
+  {
+    "name": "Aakash Singh",
+    "email": "info@agrayinfosolutions.com",
+    "mobile": "9654893760",
+    "serviceType": "complaint",
+    "message": "hello sir. there have been complaints coming regarding salary."
+  }
+]

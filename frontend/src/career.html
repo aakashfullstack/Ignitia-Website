@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: "Rubik", sans-serif;
+        color: #ffffff;
+      }
+
+      .container {
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      header {
+        height: 100vh;
+        position: relative;
+        background-image: linear-gradient(
+            rgba(34, 34, 34, 0.6),
+            rgba(34, 34, 34, 0.6)
+          ),
+          url(Assets/career.jpg);
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+      }
+
+      nav {
+        font-size: 20px;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 32px;
+      }
+
+      .header-container {
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        margin-bottom: 32px;
+        line-height: 1.05;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 48px;
+      }
+
+      .btn:link,
+      .btn:visited {
+        font-size: 1.2rem;
+        font-weight: 600;
+        background-color: #e67e22;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        padding: 16px 32px;
+        border-radius: 9px;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 48px;
+      }
+
+      section {
+        padding: 96px 0;
+        background-color: #f7f7f7;
+        text-align: center;
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 4.5rem;
+        z-index: 100;
+      }
+
+      nav ul {
+        list-style: none;
+        margin-right: 2rem;
+        gap: 2rem;
+      }
+
+      nav ul li a {
+        color: #ffff;
+        font-size: 1.25rem;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+      }
+
+      nav ul li {
+        padding: 0 0.5rem;
+        margin-right: 2vw;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3.5rem;
+      }
+
+      .logo-1 {
+        margin-right: auto;
+        padding: 2rem;
+        width: 9rem;
+        height: 11rem;
+      }
+
+      .job-listings {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .job-listing {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .job-listing:hover {
+        transform: scale(1.05);
+      }
+
+      .job-listing h3 {
+        font-size: 1.6em;
+        color: #333;
+      }
+
+      .job-listing p {
+        color: #555;
+        margin: 10px 0;
+      }
+
+      .cta-button {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .cta-button a {
+        text-decoration: none;
+        background-color: #e67e22;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        transition: background-color 0.3s;
+      }
+
+      .cta-button a:hover {
+        background-color: #d48818;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+      }
+
+      .career-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 20px;
+        background-color: #000000;
+      }
+
+      .appointment-flex-inner2 > p {
+        width: 35rem;
+      }
+
+      .appointment-flex-inner2 input {
+        width: 100%;
+        height: 2.5rem;
+        margin-bottom: 0.5rem;
+        border: none;
+        padding: 0.2rem;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .submit {
+        width: 100% !important;
+        border-radius: 0.2rem;
+      }
+
+      textarea {
+        width: 100%;
+        height: 5rem;
+      }
+
+      @media screen and (max-width: 768px) {
+        .header-container-inner {
+          width: 100%;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .job-listings {
+          flex-direction: column;
+        }
+
+        .job-listing {
+          max-width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .cta-button a {
+          font-size: 1em;
+          padding: 10px 20px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        nav ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo-1 {
+          width: 7rem;
+          height: 8rem;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .cta-button a {
+          font-size: 1rem;
+          padding: 10px 20px;
+        }
+      }
+      .popup {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .popup.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <img src="Assets/ignitialogo.png" class="logo-1" alt="logo" />
+        <ul class="nav-list">
+          <li class="drop-container1">
+            <a class="hover about" href="index.html">Home</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-container">
+        <div class="header-container-inner">
+          <h1>Create the future you envision</h1>
+          <h2>Why work with us?</h2>
+          <p>
+            We foster a collaborative environment where everyone's ideas are
+            valued, and we believe in empowering our employees to reach their
+            full potential.
+          </p>
+          <a href="#apply-form" class="btn">Start your journey</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="career-content">
+      <div class="job-listings">
+        <div class="job-listing">
+          <h3>Software Developer</h3>
+          <p>
+            We are looking for a passionate developer to build innovative
+            solutions and solve complex problems with cutting-edge technologies.
+          </p>
+          <p><strong>Location:</strong> Lucknow, UP</p>
+          <p><strong>Experience:</strong> 2+ years</p>
+        </div>
+      </div>
+
+      <div class="cta-button">
+        <a href="#apply-form">Apply Now</a>
+      </div>
+    </section>
+
+    <section id="apply-form" class="career-content">
+      <h2>Apply for a Position</h2>
+
+      <div class="appointment-flex-inner2">
+        <form id="appointment-form">
+          <div>
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="tel"
+              name="mobile"
+              placeholder="Your mobile number"
+              required
+            />
+            <input type="text" name="role" placeholder="Role" required />
+          </div>
+          <div>
+            <textarea
+              name="coverLetter"
+              placeholder="Cover Letter"
+              required
+            ></textarea>
+          </div>
+          <div>
+            <input
+              type="file"
+              name="resume"
+              accept=".pdf,.doc,.docx"
+              required
+            />
+          </div>
+          <div>
+            <input class="submit" type="submit" value="Submit/Apply" />
+          </div>
+        </form>
+      </div>
+      <div id="popup" class="popup"></div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 Ignitia. All rights reserved.</p>
+    </footer>
+    <script>
+      // Attach event listener to the form
+      document
+        .getElementById("appointment-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Create FormData object
+          const formData = new FormData();
+
+          // Add form data (non-file fields)
+          formData.append(
+            "name",
+            document.querySelector('[name="name"]').value
+          );
+          formData.append(
+            "email",
+            document.querySelector('[name="email"]').value
+          );
+          formData.append(
+            "mobile",
+            document.querySelector('[name="mobile"]').value
+          );
+          formData.append(
+            "role",
+            document.querySelector('[name="role"]').value
+          );
+          formData.append(
+            "coverLetter",
+            document.querySelector('[name="coverLetter"]').value
+          );
+
+          // Get the file input element
+          const fileInput = document.querySelector('[name="resume"]');
+          if (fileInput && fileInput.files.length > 0) {
+            formData.append("resume", fileInput.files[0]); // Append file
+          }
+
+          try {
+            const response = await fetch(
+              "http://localhost:3000/submit-career-form",
+              {
+                method: "POST",
+                body: formData, // Send the FormData
+              }
+            );
+
+            if (response.ok) {
+              const result = await response.json();
+              showPopup("Successfully Submitted"); // Show success popup
+              console.log(result.message); // Log the success message
+            } else {
+              const errorData = await response.json();
+              alert("Validation Errors: " + JSON.stringify(errorData.errors));
+            }
+          } catch (error) {
+            console.error("Error submitting form:", error);
+          }
+        });
+
+      function showPopup(message) {
+        const popup = document.getElementById("popup");
+        popup.textContent = message;
+        popup.classList.add("show");
+
+        setTimeout(() => {
+          popup.classList.remove("show");
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

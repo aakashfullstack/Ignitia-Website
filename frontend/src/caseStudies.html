@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies | Ignitia Infotech</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #000000;
+        color: white;
+        padding: 20px 0;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+
+      header nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 20px;
+      }
+
+      header nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+
+      header nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        flex-grow: 1; /* Ensures the main section takes available space */
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+        text-align: center;
+      }
+
+      main h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      main p {
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .card {
+        background-color: rgb(255, 153, 0);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: left;
+      }
+
+      .card h3 {
+        font-size: 20px;
+        color: #2a2828;
+        margin-bottom: 15px;
+      }
+
+      .card p {
+        color: #2a2828;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      footer {
+        background-color: #000000;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 2.25rem;
+        z-index: 100;
+      }
+
+      nav ul {
+        list-style: none;
+        margin-right: 2rem;
+        gap: 2rem;
+      }
+
+      nav ul li a {
+        color: #ffff;
+        font-size: 1.25rem;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+      }
+
+      nav ul li {
+        padding: 0 0.5rem;
+        margin-right: 2vw;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3.5rem;
+      }
+
+      .logo-1 {
+        margin-right: auto;
+        padding: 1.2rem;
+        width: 6.5rem;
+        height: 7.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <img src="Assets/ignitialogo.png" class="logo-1" alt="logo" />
+        <ul class="nav-list">
+          <li class="drop-container1">
+            <a class="hover about" href="index.html">Home</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Case Studies</h2>
+      <p>
+        Discover how Ignitia Infotech has helped businesses overcome challenges
+        and achieve success with our innovative IT solutions.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Complaint Management System for Agray Infosolutions Pvt. Ltd.</h3>
+          <p>
+            Developed a comprehensive and robust Complaint Management System to
+            streamline complaints and grievance handling processes with
+            auto-ticketing, ensuring efficiency and effectiveness for both the
+            client's customers and their own team.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>E-Ticketing System for Council of Science&Technology UP.</h3>
+          <p>
+            Designed and implemented a user-friendly e-ticketing system with QR
+            code integration for seamless visitor experiences for planetariums
+            and science parks in Uttar Pradesh.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Ignitia Infotech. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
