@@ -401,9 +401,12 @@ document
       serviceType: document.querySelector('[name="serviceType"]').value,
       message: document.querySelector('[name="message"]').value,
     };
-
+    const backendUrl =
+      window.location.hostname === "localhost"
+        ? "http://localhost:3000"
+        : "https://ignitia-website.onrender.com";
     try {
-      const response = await fetch("http://localhost:3000/submit-form", {
+      const response = await fetch(`${backendUrl}/submit-form`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

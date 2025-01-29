@@ -401,16 +401,16 @@
             role: document.querySelector('[name="role"]').value,
             coverLetter: document.querySelector('[name="coverLetter"]').value,
           };
-
+          const backendUrl =
+            window.location.hostname === "localhost"
+              ? "http://localhost:3000"
+              : "https://ignitia-website.onrender.com";
           try {
-            const response = await fetch(
-              "http://localhost:3000/submit-career-form",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-              }
-            );
+            const response = await fetch(`${backendUrl}/submit-career-form`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            });
 
             if (response.ok) {
               const result = await response.json();
