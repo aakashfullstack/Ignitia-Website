@@ -373,14 +373,12 @@ new Swiper(".card-wrapper", {
     delay: 5000,
   },
 
-  // If we need pagination
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
     dynamicBullets: true,
   },
 
-  // Navigation arrows
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -394,6 +392,8 @@ document
   .addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    showPopup("Submitting...");
+
     const formData = {
       name: document.querySelector('[name="name"]').value,
       email: document.querySelector('[name="email"]').value,
@@ -403,7 +403,7 @@ document
     };
 
     try {
-      const response = await fetch("https://backend.vercel.app/submit-form", {
+      const response = await fetch("http://localhost:3000/submit-form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -411,14 +411,16 @@ document
 
       if (response.ok) {
         const result = await response.json();
-        showPopup("Successfully Submitted"); // Show success popup
-        console.log(result.message); // Log the success message
+        showPopup("Successfully Submitted!");
+        console.log(result.message);
       } else {
         const errorData = await response.json();
         alert("Validation Errors: " + JSON.stringify(errorData.errors));
+        showPopup("Submission Failed!");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      showPopup("An error occurred!");
     }
   });
 
@@ -429,5 +431,5 @@ function showPopup(message) {
 
   setTimeout(() => {
     popup.classList.remove("show");
-  }, 3000);
+  }, 3000); // Popup disappears after 3 seconds
 }

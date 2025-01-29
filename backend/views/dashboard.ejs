@@ -59,33 +59,19 @@
           <th>Mobile</th>
           <th>Role</th>
           <th>Cover Letter</th>
-          <th>Resume</th>
         </tr>
       </thead>
       <tbody>
-        <% if (submissions2.length > 0) { %>
-        <!-- Fixed placement of if condition -->
         <% submissions2.forEach(submission => { %>
-        <!-- Fixed space here -->
+
         <tr>
           <td><%= submission.name %></td>
           <td><%= submission.email %></td>
           <td><%= submission.mobile %></td>
           <td><%= submission.role %></td>
           <td><%= submission.coverLetter %></td>
-          <td>
-            <% if (submission.filePath) { %>
-            <a href="<%= submission.filePath %>" target="_blank"
-              >Download Resume</a
-            >
-            <% } else { %> No resume uploaded <% } %>
-          </td>
         </tr>
-        <% }); %> <% } else { %>
-        <tr>
-          <td colspan="6">No career submissions yet.</td>
-        </tr>
-        <% } %>
+        <% }); %>
       </tbody>
     </table>
   </body>

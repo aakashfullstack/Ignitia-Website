@@ -5,16 +5,11 @@
 }
 
 body {
-  font-family: sans-serif;
-  /* height: 100%; */
+  font-family: "Rubik", sans-serif;
   line-height: 1.5;
 }
 
-p {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
+/* 
 header {
   background-image: url("Assets/orangebackground2.jpg");
   background-size: cover;
@@ -23,7 +18,20 @@ header {
   background-attachment: fixed;
   height: 100svh;
   width: 100%;
-  /* background-color: #f3f3f3; */
+  position: relative;
+  overflow: hidden;
+  animation: change 8s infinite ease-in-out;
+}
+*/
+
+header {
+  background-image: url("Assets/backgroundp2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100svh;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -69,16 +77,16 @@ nav ul li {
 .logo-1 {
   margin-right: auto;
   padding: 2rem;
-  width: 9rem;
-  height: 11rem;
-  /* margin-top: 0.75rem; */
+  width: 10rem;
+  height: 9rem;
+  margin-top: 0.3rem;
 }
 
 .logo-2 {
   flex: 1;
   border-radius: 1rem;
   max-width: 35vw;
-  height: 50vh;
+  height: 52vh;
   /* margin-left: auto; */
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.2),
     -10px -10px 10px rgb(0, 0, 0, 0.1);
@@ -115,7 +123,7 @@ nav ul li {
 }
 
 .hero-text h1 {
-  font-family: sans-serif;
+  font-family: "Rubik";
 }
 
 .moto {
@@ -145,6 +153,10 @@ nav ul li {
 }
 .menu-image {
   width: 2.5rem;
+}
+
+.swiper-flex2 p {
+  font-size: 1.2rem !important;
 }
 
 .menubar {
@@ -206,11 +218,17 @@ section h1 span {
   color: orange;
 }
 
+#section-2 p {
+  text-align: center;
+  /* text-justify: inter-word; */
+}
+
 .ignitia-description {
   margin: auto;
-  width: 85vw;
-  font-size: 1rem;
+  width: 75vw;
+  font-size: 1.1rem;
   color: #6e6e6e;
+  text-align: center;
 }
 
 .section-heading1 {
@@ -225,7 +243,7 @@ section h1 span {
 }
 
 .slider {
-  margin-top: 10rem;
+  margin-top: 5rem;
   margin-bottom: 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -405,8 +423,8 @@ section h1 span {
 }
 
 .image-ceo {
-  width: 32rem;
-  height: 28rem;
+  width: 27rem;
+  height: 30rem;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.2), -10px -10px 10px white;
   border-radius: 0.8rem;
 }
@@ -642,6 +660,7 @@ section h1 span {
 
 .logo-last {
   width: 10rem;
+  height: 7rem;
 }
 .ul2 h1,
 .ul3 h1 {
@@ -817,9 +836,6 @@ section h1 span {
     justify-items: center;
   }
 
-  .slider > div {
-    text-align: center;
-  }
   .grid2 {
     grid-row: 3/4;
   }
@@ -832,7 +848,16 @@ section h1 span {
   .swiper-flex2 img {
     width: 18rem !important;
   }
+  .swiper p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
 
+  .ignitia-description {
+    width: 90vw;
+    text-align: justify;
+    text-justify: inter-word;
+  }
   .swiper-flex2 p {
     font-size: 0.9rem !important;
   }
@@ -928,17 +953,17 @@ section h1 span {
   }
 
   .appointment {
-    height: 70vh;
+    height: 64vh;
   }
 }
 
 @media screen and (max-width: 994px) {
   .swiper-flex2 img {
-    width: 20rem !important;
+    width: 25rem !important;
   }
 
   .swiper-flex2 p {
-    width: 90% !important;
+    width: 80% !important;
   }
   #section-1 h1 {
     font-size: 2rem;
@@ -962,7 +987,7 @@ section h1 span {
   }
 
   .footer ul {
-    width: 50%;
+    width: 60%;
   }
 
   body {
@@ -1012,9 +1037,14 @@ section h1 span {
 }
 
 @media screen and (max-width: 516px) {
-  .slider div {
-    width: 95vw;
-    margin: auto;
+  .footer ul {
+    width: 75%;
+  }
+  .ul1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .slider img {
@@ -1029,9 +1059,12 @@ section h1 span {
   #section-2 h1 {
     font-size: 2rem;
   }
+  #section-2 h3 {
+    margin-top: 0.8rem;
+  }
 
   .appointment {
-    height: 85vh;
+    height: 73vh;
   }
   .appointment-flex-inner2 input {
     width: 100% !important;
@@ -1044,6 +1077,7 @@ section h1 span {
 
   .logo-last {
     width: 13rem;
+    height: 10rem;
   }
   .slider h2 {
     font-size: 1.6rem;
