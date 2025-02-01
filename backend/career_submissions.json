@@ -19,5 +19,21 @@
     "mobile": "9654893760",
     "role": "Software Developer",
     "coverLetter": "Hello Sir. I am can aspiring software developer looking for a job."
+  },
+  {
+    "name": "Aakash Singh",
+    "email": "aakash.fstack10@gmail.com",
+    "mobile": "9654893760",
+    "role": "Software Developer",
+    "coverLetter": "Hello Sir. I am an aspiring software developer looking for a job opportunity in your company.",
+    "cv": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\ignitia-website\\backend\\uploads\\1738323598841-Aakash Singh CV.pdf"
+  },
+  {
+    "name": "Aakash Singh",
+    "email": "aakash.fstack10@gmail.com",
+    "mobile": "9654893760",
+    "role": "Fullstack Developer",
+    "coverLetter": "Hello Sir, I am a fullstack developer looking for a job. Please arrange am interview.",
+    "cv": "C:\\Users\\Lenovo\\OneDrive\\Desktop\\ignitia-website\\backend\\uploads\\1738391015393-Aakash Singh Cover Letter and CV.pdf"
   }
 ]

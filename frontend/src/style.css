@@ -9,21 +9,6 @@ body {
   line-height: 1.5;
 }
 
-/* 
-header {
-  background-image: url("Assets/orangebackground2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 100svh;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  animation: change 8s infinite ease-in-out;
-}
-*/
-
 header {
   background-image: url("Assets/backgroundp2.jpg");
   background-size: cover;
@@ -77,8 +62,8 @@ nav ul li {
 .logo-1 {
   margin-right: auto;
   padding: 2rem;
-  width: 10rem;
-  height: 9rem;
+  width: 11rem;
+  height: 10rem;
   margin-top: 0.3rem;
 }
 
@@ -504,6 +489,70 @@ section h1 span {
   border-top: 0.2rem solid rgba(0, 0, 0, 0.185);
 }
 
+.appointment {
+  margin-top: 5rem;
+  min-height: 80vh;
+  width: 100%;
+  background-image: url("Assets/orangebackground2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.appointment-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.appointment-flex-inner,
+.appointment-flex-inner2 {
+  flex: 1;
+  max-width: 600px;
+}
+
+.appointment-flex-inner2 form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.appointment-flex-inner2 input,
+.appointment-flex-inner2 textarea {
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+}
+
+.textarea {
+  height: 5rem;
+  resize: vertical;
+}
+
+.submit {
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.3rem;
+  background-color: #ff9800;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 .last-container {
   overflow: hidden;
   width: 75vw;
@@ -586,56 +635,6 @@ section h1 span {
 .popup-hidden.show {
   opacity: 1;
   pointer-events: auto;
-}
-
-.appointment {
-  margin-top: 5rem;
-  height: 50vh;
-  width: 100%;
-  background-image: url("Assets/orangebackground2.jpg");
-  background-size: cover;
-  background-position: initial;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.appointment-flex > p,
-.appointment-flex-inner > p,
-.appointment-flex-inner2 > p {
-  width: 35rem;
-}
-
-.appointment-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12rem;
-}
-
-.appointment-flex-inner,
-.appointment-flex-inner2 {
-  margin-top: 5rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
-}
-
-.appointment-flex-inner2 input {
-  width: 25rem;
-  height: 2.5rem;
-  margin-bottom: 0.5rem;
-  /* border-radius: 0.2rem; */
-  border: none;
-  padding: 0.2rem;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-}
-
-.submit {
-  width: 100% !important;
-  border-radius: 0.2rem;
-}
-.textarea {
-  width: 100%;
-  height: 5rem;
 }
 
 .footer {
@@ -734,6 +733,16 @@ section h1 span {
   }
 }
 
+@media screen and (min-width: 2246px) {
+  .swiper-button-prev {
+    left: 15vw;
+  }
+
+  .swiper-button-next {
+    right: 15vw;
+  }
+}
+
 @media screen and (max-width: 2246px) {
   .slider-image {
     width: 50rem;
@@ -760,6 +769,29 @@ section h1 span {
 }
 
 @media screen and (max-width: 1100px) {
+  .appointment {
+    min-height: 100vh;
+  }
+
+  .appointment-flex {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .appointment-flex-inner,
+  .appointment-flex-inner2 {
+    max-width: 90%;
+  }
+
+  .appointment-flex-inner2 input,
+  .appointment-flex-inner2 textarea {
+    font-size: 0.9rem;
+  }
+
+  .submit {
+    font-size: 1rem;
+  }
+
   .swiper-flex2 {
     flex-direction: column;
     gap: 2rem;
@@ -819,14 +851,6 @@ section h1 span {
   .slider p {
     font-size: 1rem;
   }
-
-  .appointment-flex {
-    gap: 1rem;
-  }
-
-  .appointment-flex-inner2 input {
-    width: 15rem;
-  }
 }
 
 @media screen and (max-width: 1326px) {
@@ -848,10 +872,9 @@ section h1 span {
   .swiper-flex2 img {
     width: 18rem !important;
   }
-  .swiper p {
-    text-align: justify;
-    text-justify: inter-word;
-  }
+  /* .swiper p {
+    text-align: start;
+  } */
 
   .ignitia-description {
     width: 90vw;
@@ -889,17 +912,6 @@ section h1 span {
     font-size: 0.75rem;
   }
 
-  .appointment-flex-inner {
-    width: 95vw;
-  }
-
-  .appointment-flex > p,
-  .appointment-flex-inner > p,
-  .appointment-flex-inner2 > p {
-    width: 95vw;
-    font-size: 0.8rem;
-  }
-
   .slider p {
     width: 95vw;
   }
@@ -910,13 +922,12 @@ section h1 span {
 }
 
 @media screen and (max-width: 1257px) {
-  .appointment-flex-inner,
-  .appointment-flex-inner2 {
-    margin-top: 1.25rem;
-  }
-
   .ceo-hover1 {
     width: 35rem;
+  }
+
+  .help-text {
+    font-size: 1.8rem;
   }
 
   .ceo-hover2 {
@@ -945,15 +956,6 @@ section h1 span {
 
   .menu {
     display: block;
-  }
-
-  .appointment-flex {
-    flex-direction: column;
-    gap: 0rem;
-  }
-
-  .appointment {
-    height: 64vh;
   }
 }
 
@@ -1063,13 +1065,6 @@ section h1 span {
     margin-top: 0.8rem;
   }
 
-  .appointment {
-    height: 73vh;
-  }
-  .appointment-flex-inner2 input {
-    width: 100% !important;
-  }
-
   .last-container {
     height: 90vh;
     width: 95vw;
@@ -1085,12 +1080,6 @@ section h1 span {
 }
 
 @media screen and (max-width: 613px) {
-  .appointment-flex > p,
-  .appointment-flex-inner > p,
-  .appointment-flex-inner2 > p {
-    padding: 0.9rem;
-  }
-
   .hero-h1 {
     font-size: 1.5rem;
   }
@@ -1098,25 +1087,8 @@ section h1 span {
     font-size: 1rem;
   }
 
-  .appointment-flex-inner2 {
-    margin-top: 1rem;
-  }
-
-  .appointment-flex-inner2 input {
-    width: 15rem;
-    height: 2rem;
-  }
-
-  .textarea {
-    height: 3rem;
-  }
-
   .help-text {
     font-size: 1.2rem;
-  }
-
-  .appointment-text {
-    font-size: 1rem;
   }
 
   .ceo-hover1 {

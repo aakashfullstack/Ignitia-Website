@@ -388,7 +388,7 @@ new Swiper(".card-wrapper", {
 //backend
 
 document
-  .getElementById("appointment-form")
+  .getElementById("general-form")
   .addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -401,10 +401,12 @@ document
       serviceType: document.querySelector('[name="serviceType"]').value,
       message: document.querySelector('[name="message"]').value,
     };
+
     const backendUrl =
       window.location.hostname === "localhost"
         ? "http://localhost:3000"
         : "https://ignitia-website.onrender.com";
+
     try {
       const response = await fetch(`${backendUrl}/submit-form`, {
         method: "POST",
@@ -434,5 +436,5 @@ function showPopup(message) {
 
   setTimeout(() => {
     popup.classList.remove("show");
-  }, 3000); // Popup disappears after 3 seconds
+  }, 3000);
 }

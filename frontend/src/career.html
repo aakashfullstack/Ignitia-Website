@@ -349,7 +349,7 @@
       <h2>Apply for a Position</h2>
 
       <div class="appointment-flex-inner2">
-        <form id="appointment-form">
+        <form id="career-form" enctype="multipart/form-data">
           <div>
             <input type="text" name="name" placeholder="Your Name" required />
             <input
@@ -376,6 +376,16 @@
             ></textarea>
           </div>
           <div>
+            <label for="cv">Upload Your CV (PDF/DOC)</label>
+            <input
+              type="file"
+              name="cv"
+              id="cv"
+              accept=".pdf,.doc,.docx"
+              required
+            />
+          </div>
+          <div>
             <input class="submit" type="submit" value="Submit/Apply" />
           </div>
         </form>
@@ -388,28 +398,23 @@
     </footer>
     <script>
       document
-        .getElementById("appointment-form")
+        .getElementById("career-form")
         .addEventListener("submit", async (e) => {
           e.preventDefault();
-
           showPopup("Submitting...");
 
-          const formData = {
-            name: document.querySelector('[name="name"]').value,
-            email: document.querySelector('[name="email"]').value,
-            mobile: document.querySelector('[name="mobile"]').value,
-            role: document.querySelector('[name="role"]').value,
-            coverLetter: document.querySelector('[name="coverLetter"]').value,
-          };
+          const form = document.getElementById("career-form");
+          const formData = new FormData(form);
+
           const backendUrl =
             window.location.hostname === "localhost"
               ? "http://localhost:3000"
               : "https://ignitia-website.onrender.com";
+
           try {
             const response = await fetch(`${backendUrl}/submit-career-form`, {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(formData),
+              body: formData,
             });
 
             if (response.ok) {
