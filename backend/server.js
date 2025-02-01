@@ -8,6 +8,7 @@ const multer = require("multer");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, "../frontend/src")));
@@ -232,3 +233,5 @@ app.get("/admin-dashboard", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+module.exports = app;

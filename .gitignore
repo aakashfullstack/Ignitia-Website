@@ -63,3 +63,4 @@ out/
 *.zip
 *.tgz
 *.gz
+.vercel
