@@ -31,14 +31,22 @@
       header {
         height: 100vh;
         position: relative;
+        background-image: none;
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+
+        opacity: 0;
+        transition: opacity 1s ease-in-out, background-image 1s ease-in-out;
+      }
+
+      header.background-loaded {
         background-image: linear-gradient(
             rgba(34, 34, 34, 0.6),
             rgba(34, 34, 34, 0.6)
           ),
           url(Assets/career.jpg);
-        background-size: cover;
-        background-position: center;
-        color: #fff;
+        opacity: 1;
       }
 
       nav {
@@ -397,6 +405,19 @@
       <p>&copy; 2025 Ignitia. All rights reserved.</p>
     </footer>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const img = new Image();
+        img.src = "Assets/career.jpg";
+
+        img.onload = function () {
+          document.querySelector("header").classList.add("background-loaded");
+        };
+
+        img.onerror = function () {
+          console.error("Background image failed to load");
+        };
+      });
+
       document
         .getElementById("career-form")
         .addEventListener("submit", async (e) => {

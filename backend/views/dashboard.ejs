@@ -5,74 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
     <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #4caf50;
+        margin-bottom: 15px;
+      }
+
       table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
       }
-      table,
+
       th,
       td {
-        border: 1px solid black;
-      }
-      th,
-      td {
-        padding: 10px;
+        padding: 12px;
         text-align: left;
+        border: 1px solid #ddd;
+        background-color: #fff;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .logout-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        margin-bottom: 30px;
+        transition: background-color 0.3s;
+      }
+
+      .logout-btn:hover {
+        background-color: #d32f2f;
+      }
+
+      @media (max-width: 768px) {
+        table {
+          font-size: 14px;
+        }
+
+        .logout-btn {
+          width: 100%;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Admin Dashboard</h1>
+    <div class="container">
+      <h1>Admin Dashboard</h1>
 
-    <h2>General Form Submissions</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Mobile</th>
-          <th>Service Type</th>
-          <th>Message</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% submissions.forEach(submission => { %>
-        <!-- Fixed space here -->
-        <tr>
-          <td><%= submission.name %></td>
-          <td><%= submission.email %></td>
-          <td><%= submission.mobile %></td>
-          <td><%= submission.serviceType %></td>
-          <td><%= submission.message %></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+      <form action="/logout" method="GET">
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
 
-    <h2>Career Form Submissions</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Mobile</th>
-          <th>Role</th>
-          <th>Cover Letter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% submissions2.forEach(submission => { %>
+      <h2>General Form Submissions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Service Type</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% submissions.forEach(submission => { %>
+          <tr>
+            <td><%= submission.name %></td>
+            <td><%= submission.email %></td>
+            <td><%= submission.mobile %></td>
+            <td><%= submission.serviceType %></td>
+            <td><%= submission.message %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
 
-        <tr>
-          <td><%= submission.name %></td>
-          <td><%= submission.email %></td>
-          <td><%= submission.mobile %></td>
-          <td><%= submission.role %></td>
-          <td><%= submission.coverLetter %></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+      <!-- Career Form Submissions -->
+      <h2>Career Form Submissions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Role</th>
+            <th>Cover Letter</th>
+            <th>CV</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% submissions2.forEach(submission => { %>
+          <tr>
+            <td><%= submission.name %></td>
+            <td><%= submission.email %></td>
+            <td><%= submission.mobile %></td>
+            <td><%= submission.role %></td>
+            <td><%= submission.coverLetter %></td>
+            <td>
+              <% if (submission.cv) { %>
+              <a
+                href="/uploads/<%= path.basename(submission.cv) %>"
+                target="_blank"
+                >Download</a
+              >
+              <% } else { %> No CV uploaded <% } %>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

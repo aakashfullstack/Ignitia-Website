@@ -26,6 +26,17 @@ const rightfade2 = document.querySelectorAll(".right-fade2");
 const sectionheading1 = document.querySelector(".section-heading1");
 
 document.addEventListener("DOMContentLoaded", function () {
+  const img = new Image();
+  img.src = "Assets/backgroundp2.jpg";
+
+  img.onload = function () {
+    document.querySelector(".header").classList.add("background-loaded");
+  };
+
+  img.onerror = function () {
+    console.error("Background image failed to load");
+  };
+
   const largeText = document.querySelector(".large-screen-text");
   const smallText = document.querySelector(".small-screen-text");
 

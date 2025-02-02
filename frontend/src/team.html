@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Rubik", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+
+      nav {
+        font-size: 1.25rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 2rem;
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        z-index: 100;
+      }
+
+      nav ul {
+        list-style: none;
+        margin-right: 2rem;
+        gap: 2rem;
+      }
+
+      nav ul li a {
+        color: #ffff;
+        font-size: 1.25rem;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+      }
+
+      nav ul li {
+        padding: 0 0.5rem;
+        margin-right: 2vw;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3.5rem;
+      }
+
+      .logo-1 {
+        margin-right: auto;
+        padding: 2rem;
+        width: 9rem;
+        height: 8rem;
+      }
+
+      .container {
+        width: 80%;
+        margin: auto;
+        padding: 3.125rem 0;
+      }
+      h1 {
+        color: rgb(255, 169, 40);
+      }
+      .team-info {
+        margin-bottom: 1.875rem;
+        font-size: 1.125rem;
+      }
+      .team-members {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
+      }
+      .member {
+        background-color: #1a1a1a;
+        padding: 1.25rem;
+        border-radius: 0.625rem;
+        width: 15.625rem;
+        text-align: center;
+        box-shadow: 0 0 0.625rem rgba(253, 170, 4, 0.5);
+      }
+      .member h2 {
+        margin: 0.625rem 0;
+        color: rgb(255, 169, 40);
+      }
+      @media (max-width: 768px) {
+        .container > p {
+          text-align: start;
+          max-width: 95vw;
+          padding: 3%;
+          font-size: 1rem;
+        }
+
+        .container {
+          width: 95%;
+        }
+        .team-members {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <img src="Assets/ignitialogofinal.png" class="logo-1" alt="logo" />
+      <ul class="nav-list">
+        <li class="drop-container1">
+          <a class="hover about" href="index.html">Home</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h1>Meet Our Team</h1>
+      <p class="team-info">
+        Our team is composed of highly skilled and passionate engineering
+        graduates with diverse expertise in Information and Communication
+        Technology (ICT) solutions. With a strong foundation in software
+        development, data analysis, IoT solutions, networking, cybersecurity,
+        and emerging technologies, we are committed to delivering innovative and
+        efficient solutions tailored to meet modern industry challenges. Our
+        members bring experience, technical excellence, and a problem-solving
+        mindset, ensuring that we stay ahead in the fast-evolving technology
+        landscape. We believe in continuous learning, research, and
+        collaboration, which drive us to create impactful and cutting-edge ICT
+        solutions that empower businesses and individuals alike.
+      </p>
+      <h2 style="color: rgb(255, 169, 40)">Founding Members</h2>
+      <div class="team-members">
+        <div class="member">
+          <h2>Asheesh Mishra</h2>
+          <p>Managing Partner</p>
+        </div>
+        <div class="member">
+          <h2>Shailendri Mishra</h2>
+          <p>Partner</p>
+        </div>
+        <div class="member">
+          <h2>Aakash Singh</h2>
+          <p>Solutions Architect</p>
+        </div>
+        <div class="member">
+          <h2>Avinash Tiwari</h2>
+          <p>Business Development Manager</p>
+        </div>
+        <div class="member">
+          <h2>Rahul Kumar</h2>
+          <p>Senior Developer</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

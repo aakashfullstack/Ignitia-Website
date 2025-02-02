@@ -5,28 +5,65 @@ const fs = require("fs").promises;
 const path = require("path");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
+const session = require("express-session");
+const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.get("/", (req, res) => res.send("Express on Vercel"));
 
-// Serve frontend static files
 app.use(express.static(path.join(__dirname, "../frontend/src")));
 
-// Enable CORS
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// View engine setup for admin dashboard
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// File paths for storing form submissions
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "supersecretkey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
+
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
+const ADMIN_PASSWORD_HASH =
+  process.env.ADMIN_PASSWORD_HASH ||
+  "$2b$10$yZ1ZKoUoCp2bm8jl3hFef.y1wVXaQwlgdQ7Es2Ijwlzg.6RQSPq5y";
+
+function checkAuth(req, res, next) {
+  if (req.session.admin) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+}
+
+app.get("/login", (req, res) => {
+  res.render("login", { error: null });
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  if (
+    username === ADMIN_USERNAME &&
+    (await bcrypt.compare(password, ADMIN_PASSWORD_HASH))
+  ) {
+    req.session.admin = true;
+    return res.redirect("/admin-dashboard");
+  } else {
+    return res.render("login", { error: "Invalid username or password" });
+  }
+});
+
 const generalFormFilePath = path.join(__dirname, "submissions.json");
 const careerFormFilePath = path.join(__dirname, "career_submissions.json");
 
-// Configure Nodemailer for email notifications
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -35,8 +72,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// ------------------ MULTER FILE UPLOAD CONFIGURATION ------------------ //
-// Multer storage settings
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const uploadPath = path.join(__dirname, "uploads");
@@ -47,7 +82,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// File type validation for CV uploads
 const fileFilter = (req, file, cb) => {
   const allowedMimeTypes = [
     "application/pdf",
@@ -68,8 +102,6 @@ const fileFilter = (req, file, cb) => {
 };
 
 const upload = multer({ storage: storage, fileFilter: fileFilter });
-
-// ------------------ FORM VALIDATION FUNCTIONS ------------------ //
 
 function validateGeneralFormData(data) {
   const errors = {};
@@ -128,9 +160,8 @@ async function saveFormData(filePath, formData) {
   }
 }
 
-// ------------------ FORM HANDLING ROUTES ------------------ //
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// General Form Submission (Appointment/Query)
 app.post("/submit-form", async (req, res) => {
   const formData = req.body;
   const validationErrors = validateGeneralFormData(formData);
@@ -167,7 +198,6 @@ app.post("/submit-form", async (req, res) => {
   }
 });
 
-// Career Form Submission with File Upload
 app.post("/submit-career-form", upload.single("cv"), async (req, res) => {
   if (!req.file) {
     return res.status(400).json({
@@ -183,7 +213,7 @@ app.post("/submit-career-form", upload.single("cv"), async (req, res) => {
     return res.status(400).json({ status: "error", errors: validationErrors });
   }
 
-  careerData.cv = req.file.path; // Save file path
+  careerData.cv = req.file.path;
 
   const isSaved = await saveFormData(careerFormFilePath, careerData);
   if (isSaved) {
@@ -215,23 +245,26 @@ app.post("/submit-career-form", upload.single("cv"), async (req, res) => {
   }
 });
 
-// Admin Dashboard Route
-app.get("/admin-dashboard", async (req, res) => {
+app.get("/admin-dashboard", checkAuth, async (req, res) => {
   try {
     const generalData = await fs.readFile(generalFormFilePath, "utf8");
     const careerData = await fs.readFile(careerFormFilePath, "utf8");
     res.render("dashboard", {
       submissions: JSON.parse(generalData || "[]"),
       submissions2: JSON.parse(careerData || "[]"),
+      path: path,
     });
   } catch (err) {
     res.status(500).json({ status: "error", message: "Error reading file." });
   }
 });
 
-// Start server
+app.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/login");
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
-module.exports = app;
