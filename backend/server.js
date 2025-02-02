@@ -8,7 +8,6 @@ const multer = require("multer");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-app.get("/", (req, res) => res.send("Express on Vercel"));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -269,5 +268,3 @@ app.get("/logout", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
-module.exports = app;
