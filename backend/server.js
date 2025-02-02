@@ -67,8 +67,8 @@ const careerFormFilePath = path.join(__dirname, "career_submissions.json");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "info@ignitiainfotech.com",
-    pass: "xfgcomkbwkhhddrr",
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -172,8 +172,8 @@ app.post("/submit-form", async (req, res) => {
   const isSaved = await saveFormData(generalFormFilePath, formData);
   if (isSaved) {
     const mailOptions = {
-      from: "aakash.solarc10@gmail.com",
-      to: "info@ignitiainfotech.com",
+      from: process.env.EMAIL_USER2,
+      to: process.env.EMAIL_USER,
       subject: "New Appointment/Query Submission",
       text: `A new form submission has been received:\n\nName: ${formData.name}\nEmail: ${formData.email}\nMobile: ${formData.mobile}\nService Type: ${formData.serviceType}\nMessage: ${formData.message}`,
     };
@@ -218,8 +218,8 @@ app.post("/submit-career-form", upload.single("cv"), async (req, res) => {
   const isSaved = await saveFormData(careerFormFilePath, careerData);
   if (isSaved) {
     const mailOptions = {
-      from: "aakash.solarc10@gmail.com",
-      to: "info@ignitiainfotech.com",
+      from: process.env.EMAIL_USER2,
+      to: process.env.EMAIL_USER,
       subject: "New Career Submission",
       text: `A new career form submission has been received:\n\nName: ${careerData.name}\nEmail: ${careerData.email}\nMobile: ${careerData.mobile}\nRole: ${careerData.role}\nCover Letter: ${careerData.coverLetter}`,
       attachments: [{ filename: req.file.originalname, path: req.file.path }],
