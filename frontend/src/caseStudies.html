@@ -45,6 +45,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
+        margin-right: 2rem;
         display: flex;
         gap: 20px;
       }
@@ -54,9 +55,6 @@
         text-decoration: none;
       }
 
-      header nav ul li a:hover {
-        text-decoration: underline;
-      }
 
       main {
         flex-grow: 1; /* Ensures the main section takes available space */
@@ -156,6 +154,59 @@
         width: 6rem;
         height: 5rem;
       }
+      
+      .menu, .close {
+         display: none;
+      }
+
+.menu-image {
+  width: 2.5rem;
+}
+
+.menubar {
+  overflow: hidden;
+  border-radius: 0.2rem;
+  position: fixed;
+  height: 0;
+  top: 5.4rem;
+  right: 0;
+  min-width: 20rem;
+  border-radius: 0.3rem;
+  z-index: 10;
+  background-color: #111;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: all 0.25s ease-in-out;
+}
+
+.menubar li {
+  width: 100%;
+  list-style: none;
+}
+
+.menubar a {
+  text-decoration: none;
+  width: 100%;
+  font-size: 1.75rem;
+  transition: opacity 0.6s;
+}
+
+@media screen and (max-width: 1110px) {
+
+  .menu {
+    display: block;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+
+}
+
     </style>
   </head>
   <body>
@@ -163,9 +214,33 @@
       <nav class="nav">
         <img src="Assets/ignitialogofinal.png" class="logo-1" alt="logo" />
         <ul class="nav-list">
-          <li class="drop-container1">
-            <a class="hover about" href="index.html">Home</a>
+          <li class="drop-container1"><a class="hover about" href="index.html#section-1">About</a>
+          
           </li>
+          
+          <li class="drop-container2"><a class="hover" href="index.html#section-2">Services</a>
+            
+          </li>
+          <li><a class="hover" href="team.html">Team</a></li>
+          <li><a class="hover" href="career.html">Career</a></li>
+
+          <li class="drop-container3" style="padding-right: 0; margin-right: 0;"><a class="hover" href="index.html#section-4">Contact Us</a></li>
+        </ul>
+        <ul class="menubar">
+          <li class="firstchild drop-container1menu"><a class="hover" href="index.html#section-1">About</a>
+            
+          <li class="drop-container2menu"><a class="hover" href="index.html#section-2">Services</a>
+            
+          </li>
+          <li><a class="hover" href="team.html">Team</a></li>
+          <li><a class="hover" href="career.html">Career</a></li>
+          <li class="drop-container3menu" style="padding-right: 0; margin-right: 0;"><a class="hover" href="index.html#section-4">Contact Us</a></li>
+        </ul>
+          
+        <ul class="menu-flex">
+
+          <li class="menu"><a><img src="Assets/burger.svg" class="menu-image" alt=""></burger></a></li>
+          <li class="close"><a><img src="Assets/cross.svg" class="menu-imhhhage" alt=""></burger></a></li>
         </ul>
       </nav>
     </header>
@@ -205,3 +280,23 @@
     </footer>
   </body>
 </html>
+
+<script>
+
+const menuButton = document.querySelector(".menu");
+const menuBar = document.querySelector(".menubar");
+const closeButton = document.querySelector(".close");
+
+menuButton.addEventListener("click", () => {
+  menuBar.style.height = "89vh";
+  menuButton.style.display = "none";
+  closeButton.style.display = "block";
+});
+
+closeButton.addEventListener("click", () => {
+  menuBar.style.height = "0";
+  menuButton.style.display = "block";
+  closeButton.style.display = "none";
+});
+
+</script>

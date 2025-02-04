@@ -103,50 +103,6 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-function validateGeneralFormData(data) {
-  const errors = {};
-  if (!data.name || data.name.trim().length < 3) {
-    errors.name = "Name must be at least 3 characters long.";
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!data.email || !emailRegex.test(data.email)) {
-    errors.email = "Invalid email address.";
-  }
-  const mobileRegex = /^[6-9]\d{9}$/;
-  if (!data.mobile || !mobileRegex.test(data.mobile)) {
-    errors.mobile = "Invalid mobile number.";
-  }
-  if (!data.serviceType || data.serviceType.trim().length < 3) {
-    errors.serviceType = "Service type must be at least 3 characters long.";
-  }
-  if (!data.message || data.message.trim().length < 10) {
-    errors.message = "Message must be at least 10 characters long.";
-  }
-  return Object.keys(errors).length > 0 ? errors : null;
-}
-
-function validateCareerFormData(data) {
-  const errors = {};
-  if (!data.name || data.name.trim().length < 3) {
-    errors.name = "Name must be at least 3 characters long.";
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!data.email || !emailRegex.test(data.email)) {
-    errors.email = "Invalid email address.";
-  }
-  const mobileRegex = /^[6-9]\d{9}$/;
-  if (!data.mobile || !mobileRegex.test(data.mobile)) {
-    errors.mobile = "Invalid mobile number.";
-  }
-  if (!data.role || data.role.trim().length < 3) {
-    errors.role = "Role must be at least 3 characters long.";
-  }
-  if (!data.coverLetter || data.coverLetter.trim().length < 10) {
-    errors.coverLetter = "Cover Letter must be at least 10 characters long.";
-  }
-  return Object.keys(errors).length > 0 ? errors : null;
-}
-
 async function saveFormData(filePath, formData) {
   try {
     const data = await fs.readFile(filePath, "utf8");
@@ -164,10 +120,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.post("/submit-form", async (req, res) => {
   const formData = req.body;
-  const validationErrors = validateGeneralFormData(formData);
-  if (validationErrors) {
-    return res.status(400).json({ status: "error", errors: validationErrors });
-  }
 
   const isSaved = await saveFormData(generalFormFilePath, formData);
   if (isSaved) {
@@ -207,11 +159,6 @@ app.post("/submit-career-form", upload.single("cv"), async (req, res) => {
   }
 
   const careerData = req.body;
-  const validationErrors = validateCareerFormData(careerData);
-
-  if (validationErrors) {
-    return res.status(400).json({ status: "error", errors: validationErrors });
-  }
 
   careerData.cv = req.file.path;
 

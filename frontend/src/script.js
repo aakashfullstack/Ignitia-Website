@@ -425,14 +425,14 @@ document
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        const result = await response.json();
+      const result = await response.json();
+
+      if (response.ok && result.status === "success") {
         showPopup("Successfully Submitted!");
-        console.log(result.message);
       } else {
-        const errorData = await response.json();
-        alert("Validation Errors: " + JSON.stringify(errorData.errors));
-        showPopup("Submission Failed!");
+        showPopup(
+          "Submission Failed! " + (result.message || "Try again later.")
+        );
       }
     } catch (error) {
       console.error("Error submitting form:", error);

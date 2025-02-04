@@ -10,14 +10,13 @@ body {
 }
 
 header {
-  /* background-image: url("Assets/backgroundp2.jpg"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-image: none; /* No background initially */
-  opacity: 0; /* Make the header invisible */
-  transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
+  background-image: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 
   height: 100svh;
   width: 100%;

@@ -183,6 +183,11 @@
         margin-top: 30px;
       }
 
+      option{
+        background-color: orange;
+        color: white
+      }
+
       .cta-button a {
         text-decoration: none;
         background-color: #e67e22;
@@ -216,7 +221,8 @@
         width: 35rem;
       }
 
-      .appointment-flex-inner2 input {
+      .appointment-flex-inner2 input,
+      select {
         width: 100%;
         height: 2.5rem;
         margin-bottom: 0.5rem;
@@ -234,6 +240,58 @@
         width: 100%;
         height: 5rem;
       }
+
+      .menu, .close {
+         display: none;
+      }
+
+.menu-image {
+  width: 2.5rem;
+}
+
+.menubar {
+  overflow: hidden;
+  border-radius: 0.2rem;
+  position: fixed;
+  height: 0;
+  top: 5.4rem;
+  right: 0;
+  min-width: 20rem;
+  border-radius: 0.3rem;
+  z-index: 10;
+  background-color: #111;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: all 0.25s ease-in-out;
+}
+
+.menubar li {
+  width: 100%;
+  list-style: none;
+}
+
+.menubar a {
+  text-decoration: none;
+  width: 100%;
+  font-size: 1.75rem;
+  transition: opacity 0.6s;
+}
+
+@media screen and (max-width: 1110px) {
+
+  .menu {
+    display: block;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+
+}
 
       @media screen and (max-width: 768px) {
         .header-container-inner {
@@ -315,12 +373,35 @@
       <nav class="nav">
         <img src="Assets/ignitialogofinal.png" class="logo-1" alt="logo" />
         <ul class="nav-list">
-          <li class="drop-container1">
-            <a class="hover about" href="index.html">Home</a>
+          <li class="drop-container1"><a class="hover about" href="index.html#section-1">About</a>
+          
           </li>
+          
+          <li class="drop-container2"><a class="hover" href="index.html#section-2">Services</a>
+            
+          </li>
+          <li><a class="hover" href="caseStudies.html">Case Studies</a></li>
+          <li><a class="hover" href="team.html">Team</a></li>
+
+          <li class="drop-container3" style="padding-right: 0; margin-right: 0;"><a class="hover" href="index.html#section-4">Contact Us</a></li>
+        </ul>
+        <ul class="menubar">
+          <li class="firstchild drop-container1menu"><a class="hover" href="index.html#section-1">About</a>
+            
+          <li class="drop-container2menu"><a class="hover" href="index.html#section-2">Services</a>
+            
+          </li>
+          <li><a class="hover" href="caseStudies.html">Case Studies</a></li>
+          <li><a class="hover" href="team.html">Team</a></li>
+          <li class="drop-container3menu" style="padding-right: 0; margin-right: 0;"><a class="hover" href="index.html#section-4">Contact Us</a></li>
+        </ul>
+          
+        <ul class="menu-flex">
+
+          <li class="menu"><a><img src="Assets/burger.svg" class="menu-image" alt=""></burger></a></li>
+          <li class="close"><a><img src="Assets/cross.svg" class="menu-imhhhage" alt=""></burger></a></li>
         </ul>
       </nav>
-
       <div class="header-container">
         <div class="header-container-inner">
           <h1>Create the future you envision</h1>
@@ -359,7 +440,13 @@
       <div class="appointment-flex-inner2">
         <form id="career-form" enctype="multipart/form-data">
           <div>
-            <input type="text" name="name" placeholder="Your Name" required />
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              minlength="3"
+            />
             <input
               type="email"
               name="email"
@@ -373,14 +460,22 @@
               name="mobile"
               placeholder="Your mobile number"
               required
+              pattern="^[6-9][0-9]{9}$"
+              title="Mobile number must start with 6-9 and be 10 digits long"
             />
-            <input type="text" name="role" placeholder="Role" required />
+            <label for="role">Choose a role</label>
+            <select name="role" required>
+              <option value="Software Developer" selected>
+                Software Developer
+              </option>
+            </select>
           </div>
           <div>
             <textarea
               name="coverLetter"
               placeholder="Cover Letter"
               required
+              minlength="10"
             ></textarea>
           </div>
           <div>
@@ -405,7 +500,11 @@
       <p>&copy; 2025 Ignitia. All rights reserved.</p>
     </footer>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      const menuButton = document.querySelector(".menu");
+const menuBar = document.querySelector(".menubar");
+const closeButton = document.querySelector(".close");
+      
+document.addEventListener("DOMContentLoaded", function () {
         const img = new Image();
         img.src = "Assets/career.jpg";
 
@@ -418,14 +517,26 @@
         };
       });
 
+      menuButton.addEventListener("click", () => {
+  menuBar.style.height = "89vh";
+  menuButton.style.display = "none";
+  closeButton.style.display = "block";
+});
+
+closeButton.addEventListener("click", () => {
+  menuBar.style.height = "0";
+  menuButton.style.display = "block";
+  closeButton.style.display = "none";
+});
+
+
       document
         .getElementById("career-form")
         .addEventListener("submit", async (e) => {
-          e.preventDefault();
+          e.preventDefault(); 
           showPopup("Submitting...");
 
-          const form = document.getElementById("career-form");
-          const formData = new FormData(form);
+          const formData = new FormData(e.target);
 
           const backendUrl =
             window.location.hostname === "localhost"
@@ -438,14 +549,14 @@
               body: formData,
             });
 
-            if (response.ok) {
-              const result = await response.json();
+            const result = await response.json();
+
+            if (response.ok && result.status === "success") {
               showPopup("Successfully Submitted!");
-              console.log(result.message);
             } else {
-              const errorData = await response.json();
-              alert("Validation Errors: " + JSON.stringify(errorData.errors));
-              showPopup("Submission Failed!");
+              showPopup(
+                "Submission Failed! " + (result.message || "Try again later.")
+              );
             }
           } catch (error) {
             console.error("Error submitting form:", error);

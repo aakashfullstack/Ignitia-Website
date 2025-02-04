@@ -53,7 +53,7 @@
         <ul class="menu-flex">
 
           <li class="menu"><a><img src="Assets/burger.svg" class="menu-image" alt=""></burger></a></li>
-          <li class="close"><a><img src="Assets/cross.svg" class="menu-imhhhage" alt=""></burger></a></li>
+          <li class="close"><a><img src="Assets/cross.svg" class="menu-image" alt=""></burger></a></li>
         </ul>
       </nav>
       
@@ -388,20 +388,28 @@
 
       <form id="general-form">
         <div>
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
+          <input type="text" name="name" placeholder="Your Name" required minlength="3">
+          <input type="email" name="email" placeholder="Your Email" required>
         </div>
         <div>
-            <input type="tel" name="mobile" placeholder="Your mobile number" required>
-            <input type="text" name="serviceType" placeholder="Service Type" required>
+          <input
+            type="tel"
+            name="mobile"
+            placeholder="Your mobile number"
+            required
+            pattern="^[6-9][0-9]{9}$"
+            title="Mobile number must start with 6-9 and be 10 digits long"
+          >
+          <input type="text" name="serviceType" placeholder="Service Type" required minlength="3">
         </div>
         <div>
-            <textarea class="textarea" name="message" id="Message" placeholder="Message" required></textarea>
+          <textarea class="textarea" name="message" id="message" placeholder="Message" required minlength="10"></textarea>
         </div>
         <div>
-            <input class="submit" type="submit" value="Get Appointment/Submit Query">
+          <input class="submit" type="submit" value="Get Appointment/Submit Query">
         </div>
-    </form>
+      </form>
+      
     
 
       <div id="popup" class="popup-hidden">Successfully Submitted</div>
