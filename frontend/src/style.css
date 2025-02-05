@@ -75,6 +75,10 @@ nav ul li {
   margin-top: 0.3rem;
 }
 
+.logo-1:hover {
+  cursor: pointer;
+}
+
 .logo-2 {
   flex: 1;
   border-radius: 1rem;
