@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       isVisible = true;
 
-      setTimeout(hidePopups, 3500);
+      setTimeout(hidePopups, 4000);
     }
   }
 
