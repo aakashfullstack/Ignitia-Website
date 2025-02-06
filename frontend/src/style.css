@@ -161,7 +161,7 @@ nav ul li {
   border-radius: 0.2rem;
   position: fixed;
   height: 0;
-  top: 5.4rem;
+  top: 4rem;
   right: 0;
   min-width: 20rem;
   border-radius: 0.3rem;
@@ -217,7 +217,6 @@ section h1 span {
 
 #section-2 p {
   text-align: center;
-  /* text-justify: inter-word; */
 }
 
 .ignitia-description {
